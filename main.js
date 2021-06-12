@@ -13,6 +13,19 @@ client.once('ready', () => {
     client.user.setActivity(`test de cactus`);
 });
 
+client.on('guildMemberAdd', guildMember => { // doesnt work
+    const welcomeChannel = process.env.WELCOME_CHANNEL;
+    let userRole = process.env.USER_ROLE
+    let rulesChannel = process.env.RULES_CHANNEL;
+
+    try {
+        guildMember.roles.add(userRole);
+        guildMember.guild.channels.cache.get(welcomeChannel).send(`Bienvenido <@${guildMember.user.id}> al servidor. Leete las <#${rulesChannel}>`);    
+    } catch (err){
+        console.log(err);
+    }
+});
+
 client.on("error", (e) => console.log(e));
 client.on("warn", (e) => console.log(e));
 client.on("debug", (e) => console.log(e));
