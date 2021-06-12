@@ -1,0 +1,9 @@
+require('dotenv').config();
+module.exports = {
+    name: 'template',
+    description: 'template description',
+    aliases: ['temp', 't'],
+    execute (client, message, args, Discord){
+
+    }
+}
